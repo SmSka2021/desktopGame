@@ -1,4 +1,5 @@
 "use strict";
+
 /*получаем область сообщений*/
 let message1 = document.querySelector("#messageArea_1");
 let msg1 = "Формат ввода: A1";
@@ -61,7 +62,7 @@ function valueFire1() {
   if (mapItem.has(valueFire1)) {
     if (!setShooter.has(valueFire1)) {
       setShooter.add(valueFire1);
-      val1 = mapItem.get(valueFire1);    
+      val1 = mapItem.get(valueFire1);     
       input1.value = "";
 
       if (shipsSet.has(val1)) {
@@ -181,4 +182,3 @@ function validationPress2(event) {
 }
 
 window.onload = generateShip();
-
