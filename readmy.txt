@@ -1,1 +1,3 @@
 My first desktop game
+https://smska2021.github.io/desktopGame/
+start: index.html
