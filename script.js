@@ -74,6 +74,8 @@ function valueFire1() {
         let audio2 = new Audio(); // Создаём новый элемент Audio
         audio2.src = "./audio/vyistrel.mp3";
         audio2.autoplay = true;
+        fireBtn1.disabled = true;
+        fireBtn2.disabled = false;
 
         if (counts === 19) {
           if (counterUser1 > counterUser2) {
@@ -97,6 +99,8 @@ function valueFire1() {
         resultat.setAttribute("class", "fish");
         message1.innerHTML = "Мимо";
         message2.innerHTML = "ВАШ ход!!!";
+        fireBtn1.disabled = true;
+        fireBtn2.disabled = false;
         return counterUser1;
       }
     } else if (setShooter.has(valueFire1)) {
@@ -126,6 +130,8 @@ function valueFire2() {
         let audio2 = new Audio();
         audio2.src = "./audio/vyistrel.mp3";
         audio2.autoplay = true;
+        fireBtn2.disabled = true;
+        fireBtn1.disabled = false;
         if (counts === 19) {
           if (counterUser1 > counterUser2) {
             gameE.innerHTML = "ПОБЕДА!!! Игрок №1- чемпион!";
@@ -147,6 +153,8 @@ function valueFire2() {
         let audio2 = new Audio();
         audio2.src = "./audio/water.mp3";
         audio2.autoplay = true;
+        fireBtn2.disabled = true;
+        fireBtn1.disabled = false;
         return counterUser2;
       }
     } else if (setShooter.has(valueFire2)) {
