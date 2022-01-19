@@ -54,47 +54,53 @@ let input1 = document.querySelector("#input_1");
 let input2 = document.querySelector("#input_2");
 let val1 = "";
 let val2 = "";
-
+let setShooter = new Set();
 fireBtn1.addEventListener("click", valueFire1);
 function valueFire1() {
   let valueFire1 = input1.value.toUpperCase();
   if (mapItem.has(valueFire1)) {
-    val1 = mapItem.get(valueFire1);
-    mapItem.delete(valueFire1);
-    input1.value = "";
+    if (!setShooter.has(valueFire1)) {
+      setShooter.add(valueFire1);
+      val1 = mapItem.get(valueFire1);     
+      input1.value = "";
 
-    if (shipsSet.has(val1)) {
-      let resultat = document.getElementById([val1]);
-      resultat.setAttribute("class", "ship");
-      message1.innerHTML = "Попал!";
-      counterUser1 = counterUser1 + 1;
-      counts = counts + 1;
-      let audio2 = new Audio(); // Создаём новый элемент Audio
-      audio2.src = "./audio/vyistrel.mp3"; 
-      audio2.autoplay = true;
+      if (shipsSet.has(val1)) {
+        let resultat = document.getElementById([val1]);
+        resultat.setAttribute("class", "ship");
+        message1.innerHTML = "Попал!";
+        message2.innerHTML = "ВАШ ход!!!";
+        counterUser1 = counterUser1 + 1;
+        counts = counts + 1;
+        let audio2 = new Audio(); // Создаём новый элемент Audio
+        audio2.src = "./audio/vyistrel.mp3";
+        audio2.autoplay = true;
 
-      if (counts === 19) {
-        if (counterUser1 > counterUser2) {
-          gameE.innerHTML = "ПОБЕДА!!! Игрок №1- чемпион!";
-        } else {
-          gameE.innerHTML = "ПОБЕДА!!! Игрок №2- чемпион!";
+        if (counts === 19) {
+          if (counterUser1 > counterUser2) {
+            gameE.innerHTML = "ПОБЕДА!!! Игрок №1- чемпион!";
+          } else {
+            gameE.innerHTML = "ПОБЕДА!!! Игрок №2- чемпион!";
+          }
+          setInterval(() => (gameE.hidden = !gameE.hidden), 1000);
+          let audio = new Audio();
+          audio.src = "./audio/fanfary.mp3";
+          audio.autoplay = true;
         }
-        setInterval(() => (gameE.hidden = !gameE.hidden), 1000);
-        let audio = new Audio(); 
-        audio.src = "./audio/fanfary.mp3"; 
-        audio.autoplay = true;
-      }
-      counter_1.innerHTML = counterUser1;
-      return counterUser1;
-    } else {
-      let audio2 = new Audio(); 
-      audio2.src = "./audio/water.mp3"; 
-      audio2.autoplay = true;
+        counter_1.innerHTML = counterUser1;
+        return counterUser1;
+      } else {
+        let audio2 = new Audio();
+        audio2.src = "./audio/water.mp3";
+        audio2.autoplay = true;
 
-      let resultat = document.getElementById([val1]);
-      resultat.setAttribute("class", "fish");
-      message1.innerHTML = "Мимо";
-      return counterUser1;
+        let resultat = document.getElementById([val1]);
+        resultat.setAttribute("class", "fish");
+        message1.innerHTML = "Мимо";
+        message2.innerHTML = "ВАШ ход!!!";
+        return counterUser1;
+      }
+    } else if (setShooter.has(valueFire1)) {
+      alert("Поле ЗАНЯТО!");
     }
   } else {
     alert("Проверь формат ввода");
@@ -105,40 +111,46 @@ fireBtn2.addEventListener("click", valueFire2);
 function valueFire2() {
   let valueFire2 = input2.value.toUpperCase();
   if (mapItem.has(valueFire2)) {
-    val2 = mapItem.get(valueFire2);
-    mapItem.delete(valueFire2);
-    input2.value = "";
+    if (!setShooter.has(valueFire2)) {
+      setShooter.add(valueFire2);
+      val2 = mapItem.get(valueFire2);    
+      input2.value = "";
 
-    if (shipsSet.has(val2)) {
-      let resultat = document.getElementById([val2]);
-      resultat.setAttribute("class", "ship");
-      message2.innerHTML = "Попал!";
-      counterUser2 = counterUser2 + 1;
-      counts = counts + 1;
-      let audio2 = new Audio(); 
-      audio2.src = "./audio/vyistrel.mp3"; 
-      audio2.autoplay = true;
-      if (counts === 19) {
-        if (counterUser1 > counterUser2) {
-          gameE.innerHTML = "ПОБЕДА!!! Игрок №1- чемпион!";
-        } else {
-          gameE.innerHTML = "ПОБЕДА!!! Игрок №2- чемпион!";
+      if (shipsSet.has(val2)) {
+        let resultat = document.getElementById([val2]);
+        resultat.setAttribute("class", "ship");
+        message2.innerHTML = "Попал!";
+        message1.innerHTML = "ВАШ ход!!!";
+        counterUser2 = counterUser2 + 1;
+        counts = counts + 1;
+        let audio2 = new Audio();
+        audio2.src = "./audio/vyistrel.mp3";
+        audio2.autoplay = true;
+        if (counts === 19) {
+          if (counterUser1 > counterUser2) {
+            gameE.innerHTML = "ПОБЕДА!!! Игрок №1- чемпион!";
+          } else {
+            gameE.innerHTML = "ПОБЕДА!!! Игрок №2- чемпион!";
+          }
+          setInterval(() => (gameE.hidden = !gameE.hidden), 1000);
+          let audio = new Audio();
+          audio.src = "./audio/fanfary.mp3";
+          audio.autoplay = true;
         }
-        setInterval(() => (gameE.hidden = !gameE.hidden), 1000);
-        let audio = new Audio(); 
-        audio.src = "./audio/fanfary.mp3"; 
-        audio.autoplay = true;
+        counter_2.innerHTML = counterUser2;
+        return counterUser2;
+      } else {
+        let resultat = document.getElementById([val2]);
+        resultat.setAttribute("class", "fish");
+        message2.innerHTML = "Мимо";
+        message1.innerHTML = "ВАШ ход!!!";
+        let audio2 = new Audio();
+        audio2.src = "./audio/water.mp3";
+        audio2.autoplay = true;
+        return counterUser2;
       }
-      counter_2.innerHTML = counterUser2;
-      return counterUser2;
-    } else {
-      let resultat = document.getElementById([val2]);
-      resultat.setAttribute("class", "fish");
-      message2.innerHTML = "Мимо";
-      let audio2 = new Audio(); 
-      audio2.src = "./audio/water.mp3"; 
-      audio2.autoplay = true;
-      return counterUser2;
+    } else if (setShooter.has(valueFire2)) {
+      alert("Поле ЗАНЯТО!");
     }
   } else {
     alert("Проверь формат ввода");
