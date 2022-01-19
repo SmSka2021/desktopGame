@@ -1,4 +1,5 @@
 "use strict";
+
 /*получаем область сообщений*/
 let message1 = document.querySelector("#messageArea_1");
 let msg1 = "Формат ввода: A1";
