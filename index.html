@@ -9,7 +9,7 @@
     <title>Морской бой</title>
 </head>
 
-<body>
+<body>    
     <div class="container">
         <header class="header">
             <h1>Потопи пиратский флот!</h1>
@@ -21,8 +21,8 @@
             </div>
             <div id="messageArea_1"></div>
             <form onsubmit="return false">
-                <input type="text" id="input_1" placeholder="A1">
-                <input type="button" id="fireButton_1" value="ОГОНЬ!">
+                <input type="text" id="input_1" placeholder="A1" disabled>
+                <input type="button" id="fireButton_1" value="ОГОНЬ!" disabled>
             </form>
         </aside>
         <aside class="aside_2">
@@ -32,12 +32,22 @@
             </div>
             <div id="messageArea_2"></div>
             <form onsubmit="return false">
-                <input type="text" id="input_2" placeholder="A1">
+                <input type="text" id="input_2" placeholder="A1" disabled>
                 <input type="button" id="fireButton_2" value="ОГОНЬ!" disabled>
             </form>
         </aside>
         <div id="board">
             <div id="fin"></div>
+            <div id="rules">                
+                <h4>ПРАВИЛА ИГРЫ:</h4>
+                <p>Двум королевким капитанам поручено очистить прибрежные воды королевства от пиратских кораблей. </p> <br>
+                   <p> * Пиратский корабль занимает одну клетку игрового поля.</p>
+                   <p> * Корабли расположены случайным образом и могут находиться на соседних клетках. </p>
+                   <p> * Каждый капитан делает по одному выстрелу поочередно. </p>
+                   <p> * Король наградит только самого меткого.</p> 
+                   <h4> Вы готовы? Тогда к бою!</h4>
+                <button type="button" id="start">начать игру</button>
+            </div>
             <table>
                 <tr>
                     <td>A</td>
