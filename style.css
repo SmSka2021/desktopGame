@@ -110,6 +110,44 @@ h3 {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
 }
+#rules {
+    position: absolute;
+    top: -20px;
+    left: 15%;
+    width: 75%;
+    height: calc(98% + 20px);
+    background: darkblue;
+    border: 25px double rgb(232, 232, 238);
+    z-index: 3;
+    color:rgb(253, 250, 245);
+    font-size: 20px;
+    padding: 20px 20px;  
+    text-align: center; 
+}
+.isHidden {
+    display: none;
+}
+h4 {
+    margin: 20px auto;    
+    text-align: center;
+    color:rgb(204, 238, 12);
+}
+#start {
+    margin: 5px auto;   
+    width: 175px;
+    height: 45px;
+    font-size: 15px;
+    font-weight: 700;
+    border: 3px solid rgb(155, 11, 30);
+    border-radius: 5px;
+    font-family: 'Inter';
+    text-align: center;
+    color: darkblue;
+    cursor: pointer;
+}
+#start:hover {
+    background-color: rgb(204, 238, 12);
+}
 
 table {
     margin: 5px auto;
@@ -197,9 +235,16 @@ form input {
     form input {
         font-size: 20px;
     }
+    #rules {       
+        top: -20px;
+        left: 0%;
+        width: 100%;
+        height: calc(98% + 20px);        
+        font-size: 20px;       
+}
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1060px) {
     .counter {
         font-size: 60px;
         padding-top: 25px;
@@ -221,4 +266,11 @@ form input {
     h3 {
         font-size: 20px;
     }
+    #rules {       
+        line-height: 22px; 
+        top: -10px;
+        height: 98%;
+        font-size: 17px;  
+        padding-top: 5px;     
+}
 }
