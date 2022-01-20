@@ -1,4 +1,12 @@
-"use strict";
+"use strict";        
+let start = document.querySelector("#start");
+let rules = document.querySelector("#rules");
+start.addEventListener("click", startGame);
+function startGame() {
+  rules.classList.toggle('isHidden');
+  fireBtn1.disabled = false;
+  input1.disabled = false;  
+}
 
 /*получаем область сообщений*/
 let message1 = document.querySelector("#messageArea_1");
@@ -77,6 +85,8 @@ function valueFire1() {
         audio2.autoplay = true;
         fireBtn1.disabled = true;
         fireBtn2.disabled = false;
+        input1.disabled = true;
+        input2.disabled = false;
 
         if (counts === 19) {
           if (counterUser1 > counterUser2) {
@@ -102,6 +112,8 @@ function valueFire1() {
         message2.innerHTML = "ВАШ ход!!!";
         fireBtn1.disabled = true;
         fireBtn2.disabled = false;
+        input1.disabled = true;
+        input2.disabled = false;
         return counterUser1;
       }
     } else if (setShooter.has(valueFire1)) {
@@ -133,6 +145,8 @@ function valueFire2() {
         audio2.autoplay = true;
         fireBtn2.disabled = true;
         fireBtn1.disabled = false;
+        input2.disabled = true;
+        input1.disabled = false;
         if (counts === 19) {
           if (counterUser1 > counterUser2) {
             gameE.innerHTML = "ПОБЕДА!!! Игрок №1- чемпион!";
@@ -156,6 +170,8 @@ function valueFire2() {
         audio2.autoplay = true;
         fireBtn2.disabled = true;
         fireBtn1.disabled = false;
+       input2.disabled = true;
+        input1.disabled = false;
         return counterUser2;
       }
     } else if (setShooter.has(valueFire2)) {
@@ -182,3 +198,4 @@ function validationPress2(event) {
 }
 
 window.onload = generateShip();
+
